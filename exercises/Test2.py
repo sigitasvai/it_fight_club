@@ -33,12 +33,12 @@ class OnlinePlayer(Player):
 class Game:
     def __init__(self):
         self.players = []
+        self.joystick_number = 1
 
     def addPlayer(self, player):
         if isinstance(player, LocalPlayer):
-            joystick_number = 1
-            LocalPlayer.set_joystick_number(player, joystick_number)
-            joystick_number += 1
+            LocalPlayer.set_joystick_number(player, self.joystick_number)
+            self.joystick_number += 1
 
         self.players.append(player)
 
@@ -47,7 +47,7 @@ my_game = Game()
 
 my_game.addPlayer(OnlinePlayer("zaraza390", is_ready=True, latency_ms=55))
 my_game.addPlayer(LocalPlayer("xman939", is_ready=True))
-my_game.addPlayer(LocalPlayer("boosteriz", is_ready=True))
+my_game.addPlayer(LocalPlayer("boosteriz", is_ready=False))
 
 for player in my_game.players:
     if player.is_ready:
