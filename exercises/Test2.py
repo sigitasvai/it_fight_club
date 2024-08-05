@@ -2,14 +2,14 @@ import random
 
 
 class Player:
-    def __init__(self, nickname, is_ready):
+    def __init__(self, nickname, ready):
         self.nickname = nickname
-        self.is_ready = is_ready
+        self.is_ready = ready
 
 
 class LocalPlayer(Player):
-    def __init__(self, nickname, is_ready):
-        super().__init__(nickname, is_ready)
+    def __init__(self, nickname, ready):
+        super().__init__(nickname,ready)
         self.joystick_number = 0
 
     def set_joystick_number(self, number):
@@ -17,8 +17,8 @@ class LocalPlayer(Player):
 
 
 class OnlinePlayer(Player):
-    def __init__(self, nickname, is_ready, latency_ms):
-        super().__init__(nickname, is_ready)
+    def __init__(self, nickname, ready, latency_ms):
+        super().__init__(nickname, ready)
         self.latency_ms = latency_ms
 
     def get_connection_rating(self):
@@ -45,9 +45,9 @@ class Game:
 
 my_game = Game()
 
-my_game.addPlayer(OnlinePlayer("zaraza390", is_ready=True, latency_ms=55))
-my_game.addPlayer(LocalPlayer("xman939", is_ready=True))
-my_game.addPlayer(LocalPlayer("boosteriz", is_ready=False))
+my_game.addPlayer(OnlinePlayer("zaraza390", ready=True, latency_ms=55))
+my_game.addPlayer(LocalPlayer("xman939", ready=True))
+my_game.addPlayer(LocalPlayer("boosteriz", ready=False))
 
 for player in my_game.players:
     if player.is_ready:
