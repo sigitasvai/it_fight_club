@@ -9,7 +9,7 @@ class Player:
 
 class LocalPlayer(Player):
     def __init__(self, nickname, ready):
-        super().__init__(nickname,ready)
+        super().__init__(nickname, ready)
         self.joystick_number = 0
 
     def set_joystick_number(self, number):
