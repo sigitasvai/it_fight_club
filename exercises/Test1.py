@@ -1,26 +1,29 @@
-class Car:
-    def __init__(self, mark, model, top_speed):
-        self.mark = mark
-        self.model = model
-        self.top_speed = top_speed
 
-    def print_details(self):
-        print(f"Mark: {self.mark}\nModel: {self.model}\nTop speed: {self.top_speed} km/h")
+from datetime import datetime
 
+now = datetime.now() # current date and time
 
-# my_car = Car("Fiat", "Punto", 145)
-# my_car.print_details()
+year = now.strftime("%Y")
+print("year:", year)
 
-class ToyotaPrius(Car):
-    def __init__(self):
-        super().__init__("Toyota", "Prius", 165)
-        self.top_speed_on_electricity = 30
-        self.charge_status = 0
+month = now.strftime("%m")
+print("month:", month)
 
-    def print_details(self):
-        super().print_details()
-        print(f"Top speed on electricity: {self.top_speed_on_electricity}")
+day = now.strftime("%d")
+print("day:", day)
 
+time = now.strftime("%H:%M:%S")
+print("time:", time)
 
-my_toyota = ToyotaPrius()
-my_toyota.print_details()
+date_time = datetime.now().strftime("%m/%d/%Y")
+print("date and time:",date_time)
+
+# def main():
+#     a = datetime.today()
+#
+#     print(a)
+#
+#
+# if __name__ == "__main__":
+#     main()
+
