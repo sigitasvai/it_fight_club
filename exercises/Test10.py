@@ -14,15 +14,31 @@ class ParkingLotWindow(QWidget):
         self.parking_lot_pixmap = QPixmap(r"C:\Users\PC\Downloads\585_images\parking_lot.png")
         self.parked_car_pixmap = QPixmap(r"C:\Users\PC\Downloads\585_images\parked_car.png")
 
-        # Initialize parking slots and parked cars
-        self.parking_slots = [(20, 50), (140, 50), (260, 50), (380, 50), (500, 50)]
+        self.car_width = 100
+        self.car_height = 200
+        self.parking_lot_width = 500
+        self.parking_lot_height = 300
+
+        self.parking_slots = self.calculate_parking_slots()
         self.parked_cars = [None] * len(self.parking_slots)
+
+    def calculate_parking_slots(self):
+        slots = []
+        horizontal_slots = self.parking_lot_width // self.car_width
+        vertical_slots = self.parking_lot_height // self.car_height
+
+        for v in range(vertical_slots):
+            for h in range(horizontal_slots):
+                x = h * self.car_width
+                y = v * self.car_height
+                slots.append((x, y))
+
+        return slots
 
     def paintEvent(self, event):
         painter = QPainter(self)
         painter.drawPixmap(self.rect(), self.parking_lot_pixmap)
 
-        # Draw the parked cars
         for idx, car in enumerate(self.parked_cars):
             if car:
                 x, y = self.parking_slots[idx]
